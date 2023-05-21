@@ -44,6 +44,7 @@ def main():
             "K": st.number_input("Potassium"),
             "pH": st.number_input("pH Value"),
             "soil_moisture": st.number_input("Soil Moisture")
+            "temp"=st.number_input('Temperature', placeholder='Enter temperature value (0-200)')
         }
 
         recommended_fertilizer = recommend_fertilizer(crop, chemical_values)
