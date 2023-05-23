@@ -1,59 +1,29 @@
 import streamlit as st
 
-crop_fertilizer_mapping = {
-    "rice": {"N": 80, "P": 40, "K": 40, "pH": 5.5, "soil_moisture": 30},
-    "maize": {"N": 80, "P": 40, "K": 20, "pH": 5.5, "soil_moisture": 50},
-    "chickpea": {"N": 40, "P": 60, "K": 80, "pH": 5.5, "soil_moisture": 60},
-    # Add more crops and their corresponding chemical values here
-}
-
-fertilizer_recommendations = {
-    "NPK Fertilizer": "Apply NPK Fertilizer as per crop's requirement.",
-    "Nitrogen Fertilizer": "Apply Nitrogen Fertilizer as per crop's requirement.",
-    "Phosphorus Fertilizer": "Apply Phosphorus Fertilizer as per crop's requirement.",
-    # Add more fertilizer recommendations here
-}
-
-def recommend_fertilizer(crop, chemical_values):
-    # Retrieve the recommended fertilizer for the selected crop from the mapping
-    recommended_fertilizer = ""
-
-    if crop in crop_fertilizer_mapping:
-        crop_values = crop_fertilizer_mapping[crop]
-        # Compare the provided chemical values with the crop's values
-        if all(chemical_values[key] >= crop_values[key] for key in chemical_values):
-            recommended_fertilizer = "NPK Fertilizer"
-        elif chemical_values["N"] >= crop_values["N"]:
-            recommended_fertilizer = "Nitrogen Fertilizer"
-        elif chemical_values["P"] >= crop_values["P"]:
-            recommended_fertilizer = "Phosphorus Fertilizer"
-        # Add more fertilizer recommendations based on your criteria
-
-    return recommended_fertilizer
+crops = ['rice', 'maize', 'chickpea', 'kidneybeans', 'pigeonpeas', 'mothbeans', 'mungbean', 'blackgram', 'lentil', 'pomegranate', 'banana', 'mango', 'grapes', 'watermelon', 'muskmelon', 'apple', 'orange', 'papaya', 'coconut', 'cotton', 'jute', 'coffee']
 
 def main():
     st.title("Fertilizer Recommendation System")
+    nitrogen = st.text_input('Nitrogen', placeholder="Enter nitrogen value (20-120)")
+    phosphorus = st.text_input('Phosphorous', placeholder='Enter phosphorous value (10-125)')
+    potassium = st.text_input('Potassium', placeholder='Enter potassium value (10-200)')
+    soil_moisture = st.text_input('Soil Moisture', placeholder='Enter soil moisture value (15-90)')
+    ph = st.text_input('Ph Value', placeholder='Enter pH value (4.0-6.5)')
+    crop = st.selectbox('Select Crop', crops)
 
-    crop = st.selectbox("Select Crop", [""] + list(crop_fertilizer_mapping.keys()))
-
-    if crop:
-        st.subheader("Enter Chemical Values for {}".format(crop))
-        chemical_values = {
-            "N": st.number_input("Nitrogen"),
-            "P": st.number_input("Phosphorus"),
-            "K": st.number_input("Potassium"),
-            "pH": st.number_input("pH Value"),
-            "soil_moisture": st.number_input("Soil Moisture")
-            "temp"=st.number_input('Temperature', placeholder='Enter temperature value (0-200)')
-        }
-
-        recommended_fertilizer = recommend_fertilizer(crop, chemical_values)
-        if recommended_fertilizer:
-            fertilizer_description = fertilizer_recommendations.get(recommended_fertilizer, "")
-            st.success("Recommended Fertilizer for {}: {}".format(crop, recommended_fertilizer))
-            st.info(fertilizer_description)
+    if st.button('Recommend Fertilizer'):
+        if crop == 'rice':
+            if 20 <= int(nitrogen) <= 120 and 10 <= int(phosphorus) <= 125 and 10 <= int(potassium) <= 200 and 15 <= int(soil_moisture) <= 90 and 4.0 <= float(ph) <= 6.5:
+                st.success("Recommended Fertilizer for rice: Urea")
+            else:
+                st.success("You have entered wrong input values for rice. Please check again.")
+        elif crop == 'maize':
+            if 30 <= int(nitrogen) <= 150 and 20 <= int(phosphorus) <= 135 and 15 <= int(potassium) <= 180 and 20 <= int(soil_moisture) <= 80 and 5.5 <= float(ph) <= 7.0:
+                st.success("Recommended Fertilizer for maize: DAP (Diammonium Phosphate)")
+            else:
+                st.success("You have entered wrong input values for maize. Please check again.")
         else:
-            st.warning("No specific recommendation for the selected crop and chemical values")
+            st.success("Recommended Fertilizer for {} crop: Urea".format(crop))
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
