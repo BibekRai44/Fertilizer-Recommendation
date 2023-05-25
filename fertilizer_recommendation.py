@@ -1,6 +1,6 @@
 import streamlit as st
 
-crops = ['rice', 'maize', 'chickpea', 'kidneybeans', 'pigeonpeas', 'mothbeans', 'mungbean', 'blackgram', 'lentil', 'pomegranate', 'banana', 'mango', 'grapes', 'watermelon', 'muskmelon', 'apple', 'orange', 'papaya', 'coconut', 'cotton', 'jute', 'coffee']
+crops = ['rice', 'maize', 'chickpea', 'kidneybeans', 'pigeonpeas', 'mothbeans', 'mungbean', 'pomegranate', 'banana', 'mango', 'grapes', 'watermelon', 'muskmelon', 'apple', 'orange', 'papaya', 'coconut', 'cotton', 'jute', 'coffee']
 
 def get_placeholder(crop):
     if crop == 'rice':
@@ -13,6 +13,10 @@ def get_placeholder(crop):
         return ("Enter nitrogen value (0-20)","Enter phosphorous value (0-60)",'Enter potassium value (0-20)','Enter soil moisture value (0-45)','Enter pH value (0.0-5.5)')
     elif crop == 'pigeonpeas':
         return ("Enter nitrogen value (0-20)","Enter phosphorous value (0-60)",'Enter potassium value (0-20)','Enter soil moisture value (0-45)','Enter pH value (0.0-5.5)')
+    elif crop == 'mothbeans':
+        return ("Enter nitrogen value (0-20)","Enter phosphorous value (0-40)",'Enter potassium value (0-20)','Enter soil moisture value (0-30)','Enter pH value (0.0-5.5)')
+    elif crop == 'mungbean':
+        return ("Enter nitrogen value (0-20)","Enter phosphorous value (0-40)",'Enter potassium value (0-20)','Enter soil moisture value (0-80)','Enter pH value (0.0-5.5)')
     else:
         return "Nothing"
     
@@ -61,6 +65,19 @@ def main():
                 st.image('https://www.wur.nl/upload/5160f541-9f91-44b7-bfbc-08e0f4727505_shutterstock_1284414196.jpg',caption='Animal manure (पशु मल)',use_column_width=True)
             else:
                 st.success("You have entered wrong input values for pigeon peas. Please check again. \n\n तपाईंले गलत इनपुट दिनुभएको छ कृपया राम्रोसँग जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्")
+        elif crop == 'mothbeans':
+            if 0 <= int(nitrogen) <= 20 and 0 <= int(phosphorus) <= 40 and 0 <= int(potassium) <= 20 and 0 <= int(soil_moisture) <= 30 and 0.0 <= float(ph) <= 5.5:
+                st.success("The best fertilizer to use in moth beans is NPK . \n\n Organic fertlizers like fish emulsion, seaweed extract, and bone meal would be good for moth beans than inorganic fertilizers.\n\n मोथ बीन्समा प्रयोग गर्ने सबैभन्दा राम्रो मल NPK हो। जैविक मलहरू जस्तै माछा इमल्शन, समुद्री शैवाल निकासी, र हड्डीको खाना अकार्बनिक मलहरू भन्दा माथ बीन्सका लागि राम्रो हुन्छ। म अर्गानिक मल प्रयोग गर्न सुझाव दिन्छु ")
+                st.image('https://m.media-amazon.com/images/I/71yy+QZTCHL._SX466_.jpg',caption='NPk',use_column_width=True)
+            else:
+                st.success("You have entered wrong input values for moth beans. Please check again. \n\n तपाईंले गलत इनपुट दिनुभएको छ कृपया राम्रोसँग जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्")
+        elif crop == 'mungbean':
+            if 0 <= int(nitrogen) <= 20 and 0 <= int(phosphorus) <= 40 and 0 <= int(potassium) <= 20 and 0 <= int(soil_moisture) <= 80 and 0.0 <= float(ph) <= 5.5:
+                st.success("The best fertilizer to use in mung beans is NPK 10-10-10 which contains 10% of nitrogen,phosphrous and potassium. \n\n Organic fertlizers like compost manure would be better alternative to use than inorganic fertilizers.\n\n  मुग दाल प्रयोग गर्ने सबैभन्दा राम्रो मल NPK 10-10-10 हो जसमा 10% नाइट्रोजन, फस्फ्रस र पोटासियम हुन्छ। \n\n अजैविक मल भन्दा कम्पोष्ट मल जस्ता प्राङ्गारिक मल प्रयोगको लागि उत्तम विकल्प हुनेछ।")
+                st.image('https://n1.sdlcdn.com/imgs/j/n/y/Greatindos-Premium-Quality-1000gram-NPK-SDL289482178-1-a9d2a.jpg',caption='NPK 10-10-10',use_column_width=True)
+                st.image('https://www.agrifarming.in/wp-content/uploads/2015/03/Organic-Compost.jpg',caption='Compost Manure (कम्पोस्ट मल)',use_column_width=True)
+            else:
+                st.success("You have entered wrong input values for mung bean. Please check again. \n\n तपाईंले गलत इनपुट दिनुभएको छ कृपया राम्रोसँग जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्")
         else:
             st.success("Recommended Fertilizer for {} crop: Urea".format(crop))
 
