@@ -33,7 +33,7 @@ def get_placeholder(crop):
         return "Nothing"
     
 def main():
-    st.image('images/sc3.png')
+    st.image('images/header.png')
     crop = st.selectbox('Select Crop', crops)
     placeholders = get_placeholder(crop)
     nitrogen = st.text_input('Nitrogen', placeholder=placeholders[0])
