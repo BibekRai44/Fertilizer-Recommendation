@@ -46,8 +46,8 @@ def main():
         if crop == 'rice':
             if 0 <= int(nitrogen) <= 80 and 0 <= int(phosphorus) <= 40 and 0 <= int(potassium) <= 40 and 0 <= int(soil_moisture) <= 30 and 0.0 <= float(ph) <= 5.5:
                 st.success("The best fertilizer to use in rice is Urea. \n\n you can use locally available fertilizer like animal dung to increase land fertility as well as rice production \n\n धानमा प्रयोग गर्ने सबैभन्दा राम्रो मल युरिया हो। यूरिया प्रयोग गर्नुहोस् | \n\n जमिनको उर्वराशक्ति र धान उत्पादन बढाउन स्थानीय स्तरमा उपलब्ध मल जस्तै जनावरको गोबर प्रयोग गर्न सकिन्छ ।")
-                st.image('images/143797_shutterstock_723175018.jpg', caption='Urea (युरिया)', use_column_width=True)
-                st.image('images/istockphoto-684977254-612x612.jpg', caption='Animal dung (जनावरको गोबर)', use_column_width=True)
+                st.image('https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270/7/9/7/143797_shutterstock_723175018.jpg', caption='Urea (युरिया)', use_column_width=True)
+                st.image('https://businessfocus.co.ug/wp-content/uploads/2020/07/Manure.jpg', caption='Animal dung (जनावरको गोबर)', use_column_width=True)
             else:
                 st.success("You have entered wrong input values for rice. Please check again. \n\n तपाईंले गलत इनपुट दिनुभएको छ कृपया राम्रोसँग जाँच गर्नुहोस् र पुन: प्रयास गर्नुहोस्")
         elif crop == 'maize':
