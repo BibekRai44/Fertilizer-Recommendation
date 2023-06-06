@@ -8,8 +8,9 @@ Publicly available data was less so ML model could not be trained so I researche
  1) Python 
  2) Streamlit(open source python library) for creating app
 
-## Project Showcae
+## Project Showcase
 
+https://github.com/BibekRai44/Fertilizer-Recommendation/assets/60976347/723e84ad-5ec4-4305-9723-a631a001f0b8
 
 ## I will integrate new features in this in upcoming days.
 # Thank You 😁
